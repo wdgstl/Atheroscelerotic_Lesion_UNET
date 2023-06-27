@@ -35,10 +35,56 @@ def load_dataset(path, split=0.2):
 
     return (train_x, train_y), (valid_x, valid_y), (test_x, test_y)
 
+
+def resize_with_aspect_ratio(type, x, size):
+  if type == 'mask':
+    aspect_ratio = x.shape[1] / x.shape[0]
+    new_size = (size)
+
+    if aspect_ratio > 1:
+      new_width = new_size[0]
+      new_height = int(new_width / aspect_ratio)
+    else:
+      new_height = new_size[1]
+      new_width = int(new_height * aspect_ratio)
+
+    resized_image = cv2.resize(x, (new_width, new_height))
+
+    padded_image = np.zeros((new_size[1], new_size[0]), dtype=np.uint8) * 255
+
+
+    padding_left = (new_size[0] - new_width) // 2
+    padding_top = (new_size[1] - new_height) // 2
+
+    padded_image[padding_top:padding_top+new_height, padding_left:padding_left+new_width] = resized_image
+
+  if type == 'image':
+    aspect_ratio = x.shape[1] / x.shape[0]
+    new_size = (size)
+
+    if aspect_ratio > 1:
+      new_width = new_size[0]
+      new_height = int(new_width / aspect_ratio)
+    else:
+      new_height = new_size[1]
+      new_width = int(new_height * aspect_ratio)
+
+    resized_image = cv2.resize(x, (new_width, new_height))
+
+    padded_image = np.ones((new_size[1], new_size[0], 3), dtype=np.uint8) * 255
+
+
+    padding_left = (new_size[0] - new_width) // 2
+    padding_top = (new_size[1] - new_height) // 2
+
+    padded_image[padding_top:padding_top+new_height, padding_left:padding_left+new_width] = resized_image
+  return padded_image
+
+
 def read_image(path):
     path = path.decode()
     x = cv2.imread(path, cv2.IMREAD_COLOR)
-    x = cv2.resize(x, (W, H))
+    x = cv2.resize_with_aspect_ratio('image', x, (512, 512))
     x = x / 255.0
     x = x.astype(np.float32)
     return x
@@ -46,7 +92,7 @@ def read_image(path):
 def read_mask(path):
     path = path.decode()
     x = cv2.imread(path, cv2.IMREAD_GRAYSCALE)  ## (h, w)
-    x = cv2.resize(x, (W, H))   ## (h, w)
+    x = cv2.resize_with_aspect_ratio('mask', x, (512, 512))   ## (h, w)
     x = x / 255.0               ## (h, w)
     x = x.astype(np.float32)    ## (h, w)
     x = np.expand_dims(x, axis=-1)## (h, w, 1)
