@@ -6,7 +6,7 @@ from glob import glob
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
-""" Global parameters """
+""" Global parameters """ ""
 H = 256
 W = 256
 
