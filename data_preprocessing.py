@@ -6,7 +6,7 @@ from glob import glob
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
-""" Global parameters """
+""" Global parameters """ ""
 H = 256
 W = 256
 
@@ -25,7 +25,7 @@ def load_dataset(path, split=0.2):
     return (train_x, train_y), (valid_x, valid_y), (test_x, test_y)
 
 #resizes images to (H, W) without losing aspect ratio (uses padding)
-def resize_with_aspect_ratio(type, x, size):
+def resize_with_aspect_ratio(type, x, size, direction):
     if type == 'mask':
         aspect_ratio = x.shape[1] / x.shape[0]
         new_size = (size)
@@ -35,7 +35,10 @@ def resize_with_aspect_ratio(type, x, size):
         else:
             new_height = new_size[1]
             new_width = int(new_height * aspect_ratio)
-        resized_image = cv2.resize(x, (new_width, new_height))
+        if direction == 'up':
+            resized_image = cv2.resize(x, (new_width, new_height), interpolation=cv2.INTER_CUBIC)
+        if direction == 'down':
+            resized_image = cv2.resize(x, (new_width, new_height), interpolation=cv2.INTER_AREA)
         padded_image = np.zeros((new_size[1], new_size[0]), dtype=np.uint8) * 255
         padding_left = (new_size[0] - new_width) // 2
         padding_top = (new_size[1] - new_height) // 2
@@ -49,7 +52,10 @@ def resize_with_aspect_ratio(type, x, size):
         else:
             new_height = new_size[1]
             new_width = int(new_height * aspect_ratio)
-        resized_image = cv2.resize(x, (new_width, new_height))
+        if direction == 'up':
+            resized_image = cv2.resize(x, (new_width, new_height), interpolation=cv2.INTER_CUBIC)
+        if direction == 'down':
+            resized_image = cv2.resize(x, (new_width, new_height), interpolation=cv2.INTER_AREA)
         padded_image = np.ones((new_size[1], new_size[0], 3), dtype=np.uint8) * 255
         padding_left = (new_size[0] - new_width) // 2
         padding_top = (new_size[1] - new_height) // 2
