@@ -61,7 +61,7 @@ def evaluate_model(dataset_path, model):
         y_pred = y_pred.astype(np.int32)
 
         """ Saving the prediction """
-        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Code_UNET512\results", name)
+        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Atheroscelerotic_Lesion_UNET\results", name)
         save_results("pred", image, mask, y_pred, save_image_path)
         #        print("image", image)
         #        print("mask", mask)
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     """ Load the model """
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
-        model = tf.keras.models.load_model(os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Code_UNET512\files", "model.h5"))
+        model = tf.keras.models.load_model(os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Atheroscelerotic_Lesion_UNET\files", "model.h5"))
 
     evaluate_model(dataset_path, model)
 
