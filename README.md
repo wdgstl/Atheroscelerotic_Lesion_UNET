@@ -2,6 +2,10 @@
 
 Briefly introduce your project and what it accomplishes. Explain the type of image segmentation your model performs (e.g., semantic segmentation, instance segmentation).
 
+## Author
+
+William Giles
+
 ## Table of Contents
 
 - [Introduction](#introduction)
