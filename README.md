@@ -36,7 +36,17 @@ List any libraries, frameworks, or tools that need to be installed before using 
 
 ### Installation
 
-1. Open terminal and clone this repository using git clone 
+1. Open terminal and clone this repository using git clone https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET.git
+
+2. Install all requirements from requirements.txt using command:
+
+3. Upload image to segment to the same folder
+
+4. Run the command: python3 measure_lesion.py
+
+5. Follow prompts and enter the image filepath
+
+6. Segmentation Image, Image with Measurements, and a text file with measurements will be output into a folder called (image_name-predicted)
 
 ## Usage
 
