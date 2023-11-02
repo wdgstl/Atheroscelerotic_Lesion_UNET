@@ -36,7 +36,7 @@ List any libraries, frameworks, or tools that need to be installed before using 
 
 ### Installation
 
-Provide step-by-step instructions on how to get a development environment running. Include code blocks for commands that need to be run.
+1. Open terminal and clone this repository using git clone 
 
 ## Usage
 
