@@ -47,7 +47,7 @@ def get_mask(image_path):
 
 if __name__ == "__main__":
 
-    image_path = r"C:\Users\wdgst\OneDrive\Desktop\8457-52 Field 1 I 10x.tif"
+    image_path = r"C:\Users\wdgst\Data\ShiData\WDG\HistogramFinal\8454-41 3-7 4X.tif"
     mask = get_mask(image_path)
     measure_rois(mask)
 
