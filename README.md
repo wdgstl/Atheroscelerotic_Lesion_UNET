@@ -1,7 +1,5 @@
 # Atherosclerotic Lesion Segmentation & Quantification UNET
 
-Briefly introduce your project and what it accomplishes. Explain the type of image segmentation your model performs (e.g., semantic segmentation, instance segmentation).
-
 ## Author
 
 William Giles, UVA CS '25
@@ -26,7 +24,9 @@ William Giles, UVA CS '25
 
 ## Introduction
 
-Provide more detailed information about the problem that your project addresses and the approach your image segmentation model takes.
+The pathological cause of deadly heart diseases such as coronary artery disease, ischemic stroke, and peripheral artery disease, atherosclerosis, is a chronic inflammatory disease of the arterial wall that forms fatty plaques. These lesions occur when lipid-containing plaques that build up and line the artery walls cause ruptures, disrupting blood flow and causing adverse cardiovascular events. Atherosclerotic research is commonly conducted using gene engineered mice, such as Apoe and Ldlr knockouts (Apoe-/-, Ldlr-/-). These mice develop all phases of atherosclerotic lesions that humans do, making them a great way to gain more insight into how this deadly pathological cause manifests itself in humans. The method for histological analysis of atherosclerosis consists of the measurement of plaque burden on cross sections of the aortic sinus and root stained with oil red O staining and hematoxylin. 
+
+Because the current methods for measuring atherosclerotic lesion sizes on numerous histological sections are extremely tedious, the goal of this research project is to develop and train a 2D-Unet to automate and optimize this process.
 
 ## Getting Started
 
@@ -36,7 +36,17 @@ List any libraries, frameworks, or tools that need to be installed before using 
 
 ### Installation
 
-Provide step-by-step instructions on how to get a development environment running. Include code blocks for commands that need to be run.
+1. Open terminal and clone this repository using git clone https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET.git
+
+2. Install all requirements from requirements.txt using command:
+
+3. Upload image to segment to the same folder
+
+4. Run the command: python3 measure_lesion.py
+
+5. Follow prompts and enter the image filepath
+
+6. Segmentation Image, Image with Measurements, and a text file with measurements will be output into a folder called (image_name-predicted)
 
 ## Usage
 
