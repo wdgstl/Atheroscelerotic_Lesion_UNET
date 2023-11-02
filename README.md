@@ -4,7 +4,7 @@ Briefly introduce your project and what it accomplishes. Explain the type of ima
 
 ## Author
 
-William Giles
+William Giles, UVA CS '25
 
 ## Table of Contents
 
