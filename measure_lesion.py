@@ -6,7 +6,7 @@ import keras.models
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-from keras.saving.object_registration import CustomObjectScope
+from keras.utils import CustomObjectScope
 
 from data_preprocessing import resize_with_aspect_ratio
 from metrics import dice_coef, dice_loss
