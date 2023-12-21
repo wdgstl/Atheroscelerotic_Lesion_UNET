@@ -9,7 +9,7 @@ import cv2
 import pandas as pd
 from tqdm import tqdm
 import tensorflow as tf
-from tensorflow.keras.utils import CustomObjectScope
+from keras.utils import CustomObjectScope
 from sklearn.metrics import f1_score, jaccard_score, precision_score, recall_score
 from metrics import dice_loss, dice_coef
 from data_preprocessing import load_dataset, resize_with_aspect_ratio

@@ -2,8 +2,8 @@ import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger, ReduceLROnPlateau, EarlyStopping, TensorBoard
-from tensorflow.keras.optimizers import Adam
+from keras.callbacks import ModelCheckpoint, CSVLogger, ReduceLROnPlateau, EarlyStopping, TensorBoard
+from keras.optimizers import Adam
 from unet import build_unet
 from metrics import dice_loss, dice_coef
 from data_preprocessing import create_dir, load_dataset, tf_dataset
