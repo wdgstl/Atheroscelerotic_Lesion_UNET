@@ -81,6 +81,10 @@ There were a total of 2533 images used in this project. They were broken up into
 The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
 
 ![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/fc59242a-f69a-4126-8406-3699cf883887)
+![seg](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/05bbaeed-af33-475d-8f2a-52bdf148c284)
+![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/71b86f9b-db56-4797-990e-0c16b021038a)
+
+
 
 
 
