@@ -80,6 +80,12 @@ There were a total of 2533 images used in this project. They were broken up into
 
 The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
 
+![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/fc59242a-f69a-4126-8406-3699cf883887)
+
+
+
+
+
 The model metrics can be broken down into two components: metrics concerning the segmentation accuracy, and metrics concerning the lesion size measurement accuracy.
 
 Segmentation Metrics:
