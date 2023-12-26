@@ -74,6 +74,8 @@ After the manually segmented images are obtained, several steps of image process
 
 The next stage of image preprocessing involved converting .czi segmentation images to .tif segmentation masks, since .czi file extensions are not compatible with the UNET architecture. This stage involved using ImageJ to convert the manual segmentations of the raw image into binary masks, where white represents areas that are segmented as the lesion, and black is the background. This is an important step when dealing with training a 2D U-Net because it puts the mask in terms of 1s and 0s, which allows it to perform the correct matrix calculations. Next, because measuring the lesions was part of the histology image preparation section, the measurement values for each image are also saved. Overall, the end goal of preprocessing is to have the images with the correct file extension so that they are compatible with the UNET, be placed into two distinct folders (histology and segmentation), and that each segmentation has a corresponding histology image. 
 
+There were a total of 2533 images used in this project. They were broken up into 1533 images that were used to train the UNET, 510 images that were used to validate the UNET, and 510 images that were used to test and measure the accuracy of the UNET. 
+
 ## Results
 
 Showcase the results of your model with images that compare the input and segmented output. Quantitative metrics can also be included here.
