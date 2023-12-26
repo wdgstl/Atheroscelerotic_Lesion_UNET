@@ -78,7 +78,17 @@ There were a total of 2533 images used in this project. They were broken up into
 
 ## Results
 
-Showcase the results of your model with images that compare the input and segmented output. Quantitative metrics can also be included here.
+The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
+
+The model metrics can be broken down into two components: metrics concerning the segmentation accuracy, and metrics concerning the lesion size measurement accuracy.
+
+Segmentation Accuracy:
+
+
+
+Lesion Measurement Accuracy:
+
+
 
 ## Contributing
 
