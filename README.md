@@ -82,11 +82,14 @@ The model takes in a histogram image and outputs a predicted segmentation mask a
 
 The model metrics can be broken down into two components: metrics concerning the segmentation accuracy, and metrics concerning the lesion size measurement accuracy.
 
-Segmentation Accuracy:
+Segmentation Metrics:
+Overall Model Metrics:
+F1: 0.82380
+Jaccard: 0.71482
+Recall: 0.80116
+Precision: 0.86614
 
-
-
-Lesion Measurement Accuracy:
+Lesion Measurement Metrics:
 
 
 
