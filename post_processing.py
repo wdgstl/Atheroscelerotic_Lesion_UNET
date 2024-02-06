@@ -18,11 +18,6 @@ def measure_rois(mask):
     properties = measure.regionprops(labels)
     areas = [prop.area for prop in properties]
     mean = []
-    #a = [64561.03, 36830.696, 2707.418, 61519.404, 1333.779]
-    #[print(f"{area2} / {area} = {area2/area}") for area2, area in zip(sorted(a),sorted(areas))]
-    #[mean.append(area2/area) for area2, area in zip(sorted(a),sorted(areas))]
-    #ratio = sum(mean)/ len(mean)
-    #print(ratio)
 
     # Ignore regions that are too small
     min_region_area = 5  # Set this value based on your knowledge of the problem
@@ -50,7 +45,6 @@ def measure_rois(mask):
         ax.add_patch(rect)
 
         region_label = f'Area: {round(region.area * 90.81,3)}'
-        print(region.area* 90.81)
         ax.text(minc, minr, region_label, color='white')
 
     ax.set_axis_off()
@@ -62,10 +56,4 @@ if __name__ == "__main__":
     mask = io.imread(mask_path)
     mask = resize_with_aspect_ratio("mask", mask, (256, 256), 'down')
     measure_rois(mask)
-
-# 1	64561.033	255	255	255
-# 2	36830.696	255	255	255
-# 3	2707.418	255	255	255
-# 4	61519.404	255	255	255
-# 5	1333.779	255	255	255
 

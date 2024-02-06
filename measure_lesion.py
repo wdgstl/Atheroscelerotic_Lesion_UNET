@@ -29,6 +29,14 @@ def get_mask(image_path):
     plt.imshow(image_rgb)
     plt.axis('off')
     plt.show()
+
+    # Save image locally
+    s = image_path.splitlines()
+    s = s[-1]
+    print(s)
+    cv2.imwrite(str(os.curdir) + f'/results/{s}.png', image)
+
+    print(str(os.curdir + '/results/im.jpg'))
     x = image / 255.0  ## [H, w, 3]
     x = np.expand_dims(x, axis=0)  ## [1, H, w, 3]
 
@@ -45,8 +53,9 @@ def get_mask(image_path):
     return y_pred
 
 if __name__ == "__main__":
-
-    image_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\HistogramFinal\8454-41 3-7 4X.tif"
+    image_path = input(r"Enter path to Histogram Image: ")
+    #image_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\HistogramFinal\8454-39 3-6 4X.tif"
     mask = get_mask(image_path)
     measure_rois(mask)
+
 
