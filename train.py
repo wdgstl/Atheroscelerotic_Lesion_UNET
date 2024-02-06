@@ -63,7 +63,7 @@ if __name__ == "__main__":
     csv_path = os.path.join("files", "log.csv")
 
     """ Dataset """
-    dataset_path = r"C:\Users\wdgst\Data\ShiData\WDG"
+    dataset_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23"
 
     train_unet(dataset_path, epochs = num_epochs, batch_size = batch_size, lr = lr)
 

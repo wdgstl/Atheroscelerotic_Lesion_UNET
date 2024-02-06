@@ -41,20 +41,21 @@ def evaluate_model(dataset_path, model):
     _, _, (test_x, test_y) = load_dataset(dataset_path)
     """ Prediction and Evaluation """
     SCORE = []
-    for x, y in tqdm(zip(test_x, test_y), total=len(test_y)):
+    for x, y in tqdm(zip(test_x, test_y), total=2):
+        #len(test_y
         """ Extracting the name """
         name = os.path.basename(x)
         #        print("NAME:",name)
 
         """ Reading the image """
         image = cv2.imread(x, cv2.IMREAD_COLOR)  ## [H, w, 3]
-        image = resize_with_aspect_ratio('image', image, (W, H))  ## [H, w, 3]
+        image = resize_with_aspect_ratio('image', image, (W, H), 'down')  ## [H, w, 3]
         x = image / 255.0  ## [H, w, 3]
         x = np.expand_dims(x, axis=0)  ## [1, H, w, 3]
 
         """ Reading the mask """
         mask = cv2.imread(y, cv2.IMREAD_GRAYSCALE)
-        mask = resize_with_aspect_ratio('mask', mask, (W, H))
+        mask = resize_with_aspect_ratio('mask', mask, (W, H), 'down')
 
         """ Prediction """
         y_pred = model.predict(x, verbose=0)[0]
@@ -63,7 +64,7 @@ def evaluate_model(dataset_path, model):
         y_pred = y_pred.astype(np.int32)
 
         """ Saving the prediction """
-        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Atheroscelerotic_Lesion_UNET\results", name)
+        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\results", name)
         save_results("pred", image, mask, y_pred, save_image_path)
         #        print("image", image)
         #        print("mask", mask)
@@ -90,17 +91,17 @@ def evaluate_model(dataset_path, model):
     print(f"Precision: {score[3]:0.5f}")
 
     df = pd.DataFrame(SCORE, columns=["Image", "F1", "Jaccard", "Recall", "Precision"])
-    df.to_csv("files/score.csv")
+    df.to_csv(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23/files/score.csv")
 
 if __name__ == "__main__":
     """ Directory for storing files """
     create_dir("results")
 
-    dataset_path = r"C:\Users\wdgst\Data\ShiData\WDG"
+    dataset_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23"
 
     """ Load the model """
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
-        model = tf.keras.models.load_model(os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Atheroscelerotic_Lesion_UNET\files", "model.h5"))
+        model = tf.keras.models.load_model(os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\files", "model.h5"))
 
     evaluate_model(dataset_path, model)
 

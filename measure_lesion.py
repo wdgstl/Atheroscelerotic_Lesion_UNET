@@ -17,13 +17,12 @@ from post_processing import measure_rois
 def get_mask(image_path):
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
         model = tf.keras.models.load_model(
-            os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\Atheroscelerotic_Lesion_UNET\files", "model.h5"))
+            os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\files", "model.h5"))
 
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)  ## [H, w, 3]
 
 
-
-    image = resize_with_aspect_ratio('image', image, (256, 256), 'down')  ## [H, w, 3]
+    image = resize_with_aspect_ratio('image', image, (256, 256), 'down')  ## [H, w, 3]\
     image_rgb = image[:, :, ::-1]
 
     # Then display the image
@@ -47,7 +46,7 @@ def get_mask(image_path):
 
 if __name__ == "__main__":
 
-    image_path = r"C:\Users\wdgst\Data\ShiData\WDG\HistogramFinal\8454-41 3-7 4X.tif"
+    image_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\HistogramFinal\8454-41 3-7 4X.tif"
     mask = get_mask(image_path)
     measure_rois(mask)
 

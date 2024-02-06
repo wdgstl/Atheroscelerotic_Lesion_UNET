@@ -58,7 +58,7 @@ def measure_rois(mask):
     plt.show()
 
 if __name__ == "__main__":
-    mask_path = r"C:\Users\wdgst\Data\ShiData\WDG\SegmentedFinal\masks\8627-284 4-3 4X_mask.tif"
+    mask_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\SegmentedFinal\masks\8627-284 4-3 4X_mask.tif"
     mask = io.imread(mask_path)
     mask = resize_with_aspect_ratio("mask", mask, (256, 256), 'down')
     measure_rois(mask)
