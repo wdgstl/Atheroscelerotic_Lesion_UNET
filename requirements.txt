@@ -2,6 +2,7 @@ imageio==2.33.1
 keras==3.0.4
 matplotlib==3.8.2
 numpy==1.26.4
+opencv-python
 pandas==2.2.0
 patchify==0.2.3
 Pillow==10.2.0
