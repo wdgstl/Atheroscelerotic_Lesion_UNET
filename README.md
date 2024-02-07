@@ -78,13 +78,19 @@ This model used private datasets collected from Shi Lab. (2,533 histogram images
 
 The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
 
-Raw Histogram: ![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/0b667b86-8197-41cb-99d7-65367f14c54f)
+_**Raw Histogram **_
+
+![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/0b667b86-8197-41cb-99d7-65367f14c54f)
 
 
-Segmentation Mask (Model output a.) ![mask](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/6f5c946a-bd54-4561-a0ae-a0bbeb31a081)
+_**Segmentation Mask (Model output a.)**_ 
+
+![mask](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/6f5c946a-bd54-4561-a0ae-a0bbeb31a081)
 
 
-Segmentation with Measurements (Model output b.) ![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/1a9483e2-b0bb-4406-a312-23a50ac13693)
+_**Segmentation with Measurements (Model output b.)**_ 
+
+![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/1a9483e2-b0bb-4406-a312-23a50ac13693)
 
 
 
