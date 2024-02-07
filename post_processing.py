@@ -18,7 +18,7 @@ def measure_rois(mask_path, mask):
     properties = measure.regionprops(labels)
 
     # Ignore regions that are too small
-    min_region_area = 5  # Set this value based on your knowledge of the problem
+    min_region_area = 5  
     labels_filtered = np.copy(labels)
     for region in properties:
         if region.area < min_region_area:
