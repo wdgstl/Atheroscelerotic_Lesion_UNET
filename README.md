@@ -78,14 +78,15 @@ This model used private datasets collected from Shi Lab. (2,533 histogram images
 
 The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
 
-Raw Histogram:
-![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/fc59242a-f69a-4126-8406-3699cf883887)
+Raw Histogram: ![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/0b667b86-8197-41cb-99d7-65367f14c54f)
 
-Segmentation Mask (Model output a.)
-![seg](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/05bbaeed-af33-475d-8f2a-52bdf148c284)
 
-Segmentation with Measurements (Model output b.)
-![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/71b86f9b-db56-4797-990e-0c16b021038a)
+Segmentation Mask (Model output a.) ![mask](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/6f5c946a-bd54-4561-a0ae-a0bbeb31a081)
+
+
+Segmentation with Measurements (Model output b.) ![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/1a9483e2-b0bb-4406-a312-23a50ac13693)
+
+
 
 The model metrics, displayed below, demonstrate the segmentation accuracy of v1.0 of the AtheroQuantNet 2D-UNET.
 
