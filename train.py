@@ -7,7 +7,6 @@ from keras.optimizers import Adam
 from unet import build_unet
 from metrics import dice_loss, dice_coef
 from data_preprocessing import create_dir, load_dataset, tf_dataset
-import cv2
 
 """ Global parameters """
 H = 256

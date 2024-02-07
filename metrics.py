@@ -1,8 +1,4 @@
-
-import numpy as np
 import tensorflow as tf
-from keras import backend as K
-
 smooth = 1e-15
 def dice_coef(y_true, y_pred):
     y_true = tf.keras.layers.Flatten()(y_true)

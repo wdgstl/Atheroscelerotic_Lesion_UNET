@@ -1,8 +1,5 @@
-#preprocess hist image (resize w aspect ratio)
 import os
-
 import cv2
-import keras.models
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
@@ -11,7 +8,6 @@ from keras.utils import CustomObjectScope
 from data_preprocessing import resize_with_aspect_ratio
 from metrics import dice_coef, dice_loss
 from post_processing import measure_rois
-
 
 
 def get_mask(image_path):
@@ -25,18 +21,13 @@ def get_mask(image_path):
     image = resize_with_aspect_ratio('image', image, (256, 256), 'down')  ## [H, w, 3]\
     image_rgb = image[:, :, ::-1]
 
-    # Then display the image
+    image_number = os.path.basename(image_path)
+    # Save image locally
     plt.imshow(image_rgb)
     plt.axis('off')
-    plt.show()
+    plt.savefig(f"results/histogram_{image_number}.png")
+    print(f"Histogram Saved")
 
-    # Save image locally
-    s = image_path.splitlines()
-    s = s[-1]
-    print(s)
-    cv2.imwrite(str(os.curdir) + f'/results/{s}.png', image)
-
-    print(str(os.curdir + '/results/im.jpg'))
     x = image / 255.0  ## [H, w, 3]
     x = np.expand_dims(x, axis=0)  ## [1, H, w, 3]
 
@@ -46,16 +37,19 @@ def get_mask(image_path):
     y_pred = y_pred.astype(np.int32)
 
 
+    # Save mask locally
     plt.imshow(y_pred, cmap='gray')
     plt.axis('off')
-    plt.show()
+    plt.savefig(f'results/mask_{image_number}.png')
+    print("------------------------")
+    print(f"Segmentation Mask Saved")
 
     return y_pred
 
 if __name__ == "__main__":
+
     image_path = input(r"Enter path to Histogram Image: ")
-    #image_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\HistogramFinal\8454-39 3-6 4X.tif"
     mask = get_mask(image_path)
-    measure_rois(mask)
+    measure_rois(image_path, mask)
 
 

@@ -1,7 +1,5 @@
-from patchify import patchify, unpatchify
-#import cv2
+from patchify import patchify
 import numpy as np
-from matplotlib import pyplot as plt
 import os
 from PIL import Image
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
