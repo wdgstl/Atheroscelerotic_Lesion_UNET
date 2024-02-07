@@ -1,5 +1,6 @@
 # **AtheroQuantNet v1.0**
 Atherosclerotic Lesion Segmentation & Quantification UNET
+
 v.10 - Feb 7, 2024
 
 ## Author
@@ -89,8 +90,11 @@ Segmentation with Measurements (Model output b.)
 The model metrics, displayed below, demonstrate the segmentation accuracy of v1.0 of the AtheroQuantNet 2D-UNET.
 
 F1: 0.82380
+
 Jaccard: 0.71482
+
 Recall: 0.80116
+
 Precision: 0.86614
 
 ## Further Work
