@@ -112,9 +112,11 @@ Future work will be dedicated to enhancing model accuracy and usability. Some be
 ## Citations
 
 https://github.com/nikhilroxtomar/Brain-Tumor-Segmentation-in-TensorFlow-2.0/blob/main/UNET/README.md
+
 Consulted for overall unet architecture & training/testing pipelines.
 
 https://arxiv.org/abs/1505.04597
+
 Consulted for 2D-UNET architecture. 
 
 ## Contact
