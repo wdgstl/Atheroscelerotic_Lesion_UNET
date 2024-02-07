@@ -9,15 +9,12 @@ William Giles, UVA CS '25
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Installation & Usage](#installation)
 - [Model Overview](#model-overview)
   - [Architecture](#architecture)
   - [Training](#training)
-  - [Performance](#performance)
 - [Datasets](#datasets)
 - [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
 - [Citations](#citations)
 - [Contact](#contact)
 
@@ -67,10 +64,7 @@ The next stage of image preprocessing involved converting .czi segmentation imag
 
 There were a total of 2533 images used in this project. They were broken up into 1533 images that were used to train the UNET, 510 images that were used to validate the UNET, and 510 images that were used to test and measure the accuracy of the UNET. 
 
-### Performance
-
 ## Datasets
-
 
 
 ## Results 
