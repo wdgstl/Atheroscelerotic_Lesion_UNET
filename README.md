@@ -10,7 +10,6 @@ William Giles, UVA CS '25
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
 - [Model Overview](#model-overview)
   - [Architecture](#architecture)
   - [Training](#training)
@@ -32,41 +31,33 @@ Because the current methods for measuring atherosclerotic lesion sizes on numero
 
 ### Prerequisites
 
-List any libraries, frameworks, or tools that need to be installed before using your project.
+All requirements needed for running this model are in requirements.txt.
 
-### Installation
+To install them, simply run the command: pip install -r requirements.txt 
+
+### Installation & Usage
 
 1. Open terminal and clone this repository using git clone https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET.git
 
-2. Install all requirements from requirements.txt using command:
+2. Install all requirements from requirements.txt using command: pip install -r requirements.txt 
 
 3. Upload image to segment to the same folder
 
-4. Run the command: python3 measure_lesion.py
+4. Run the command: python3 measure_lesion.py 
 
-5. Follow prompts and enter the image filepath
+5. Follow prompts and enter the image filepath 
 
-6. Segmentation Image, Image with Measurements, and a text file with measurements will be output into a folder called (image_name-predicted)
-
-## Usage
-
-Explain how to use your model with code snippets and examples. Detail any scripts or commands to run the model, input data formats, and how to interpret the output.
+6. Histogram Image, Segmentation Image, Image with Measurements, and a csv with measurements will be saved in the results file of the directory. 
 
 ## Model Overview
 
 ### Architecture
 
-Describe the architecture of your model. Include diagrams if possible.
+![image](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/fcd2cd88-1cc7-402b-991b-ba787347de63)
+
+Convolutional neural networks are a type of deep learning model that have the ability to process and analyze images, making them ideal candidates for improving many biomedical image classification, recognition, and segmentation processes that are required in the medical field. These models are supervised learning models, meaning that they can be trained with thousands of images that are labeled with a corresponding mask, or annotated image. U-net is a type of convolutional neural network architecture that is ideal for segmenting 2D biomedical images. It consists of two primary components: the contracting path, and the expanding path [6]. The contracting path is down convolutional and consists of a series of repeated convolutional and pooling operations. As the images are processed through this path, the feature maps get spatially smaller, increasing the “what” and decreasing the “where.” Next, the feature maps are built up into the original image size in the expanding path, where the up-sample representations at each step are concatenated with the corresponding feature maps in the contraction pathway. Ultimately, training a 2D U-Net model with hundreds to thousands of images will increase its accuracy in segmenting images until it is ready to be safely deployed in the medical field. As mentioned, these models have had tremendous success in segmenting biomedical images. In the Shi lab, a 2D-Unet supervised model has been created and trained to automatically segment abdominal subcutaneous fat and visceral fat on CT and magnetic resonance images [1][2]. The question is whether a 2D-Unet supervised model can be used to catalyze advances in researching deadly heart diseases.
 
 ### Training
-
-Detail the training process, including any pre-processing steps, hardware used (e.g., GPU), training times, and challenges faced.
-
-### Performance
-
-Discuss the performance metrics you used to evaluate your model and the results it achieved.
-
-## Datasets
 
 The first component in data collection is developing the histology images of the oil red O-stained cross sections of mouse aortas from the Apoe and Ldlr knockouts. First, the microscopic slides of these mice must be developed and stained. In order to stain the aortic samples, the aortic root and adjacent 1/3 of the heart are embedded in Tissue-Tek compound and cross-sectioned in 10-µm thickness. Sections are stained with oil red O and hematoxylin and counterstained with fast green. Stained sections are imaged under a Zeiss primo star microscope through AxioVision 4.8 program. Then, the Zeiss Zen program is used to image these samples, and the images are saved as .czi images that contain manually segmented atherosclerotic lesions along with measured sizes for each lesion.
 
@@ -76,7 +67,13 @@ The next stage of image preprocessing involved converting .czi segmentation imag
 
 There were a total of 2533 images used in this project. They were broken up into 1533 images that were used to train the UNET, 510 images that were used to validate the UNET, and 510 images that were used to test and measure the accuracy of the UNET. 
 
-## Results
+### Performance
+
+## Datasets
+
+
+
+## Results 
 
 The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
 
@@ -84,13 +81,7 @@ The model takes in a histogram image and outputs a predicted segmentation mask a
 ![seg](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/05bbaeed-af33-475d-8f2a-52bdf148c284)
 ![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/71b86f9b-db56-4797-990e-0c16b021038a)
 
-
-
-
-
-
-
-The model metrics can be broken down into two components: metrics concerning the segmentation accuracy, and metrics concerning the lesion size measurement accuracy.
+The model metrics, displayed below, demonstrate the segmentation accuracy of the UNET.
 
 Segmentation Metrics:
 Overall Model Metrics:
@@ -99,23 +90,13 @@ Jaccard: 0.71482
 Recall: 0.80116
 Precision: 0.86614
 
-Lesion Measurement Metrics:
-
-
-
-## Contributing
-
-If you're open to contributions, provide guidelines for how others can contribute to your project.
-
-## License
-
-Specify the license under which your project is released.
-
 ## Citations
 
-If your work builds upon or uses datasets or code from other projects, cite these sources.
+https://github.com/nikhilroxtomar/Brain-Tumor-Segmentation-in-TensorFlow-2.0/blob/main/UNET/README.md
+
+https://arxiv.org/abs/1505.04597
 
 ## Contact
 
-Include contact information for the project maintainers or contributors for users with further questions or feedback.
+For more information, contact William Giles @ wdgstl@gmail.com
 
