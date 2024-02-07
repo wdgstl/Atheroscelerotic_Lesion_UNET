@@ -1,4 +1,4 @@
-# **AtheroQuantNet**:
+# **AtheroQuantNet v1.0**
 Atherosclerotic Lesion Segmentation & Quantification UNET
 
 ## Author
