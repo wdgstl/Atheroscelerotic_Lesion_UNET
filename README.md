@@ -1,4 +1,4 @@
-# Atherosclerotic Lesion Segmentation & Quantification UNET
+# **AtheroQuantNet**:Atherosclerotic Lesion Segmentation & Quantification UNET
 
 ## Author
 
@@ -66,6 +66,7 @@ There were a total of 2533 images used in this project. They were broken up into
 
 ## Datasets
 
+Private datasets collected from Shi Lab. (2,533 histogram images and 2,533 segmentation images). 
 
 ## Results 
 
