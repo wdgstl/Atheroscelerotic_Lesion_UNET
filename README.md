@@ -1,11 +1,11 @@
 # **AtheroQuantNet v1.0**
 Atherosclerotic Lesion Segmentation & Quantification UNET
 
-v.10 - Feb 7, 2024
+v 1.0 - Feb 7, 2024
 
 ## Author
 
-William Giles, UVA CS '25
+William Giles, UVA CS & DS'25
 
 ## Table of Contents
 
