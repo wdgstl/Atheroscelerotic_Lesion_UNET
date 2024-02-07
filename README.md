@@ -16,6 +16,7 @@ William Giles, UVA CS '25
   - [Training](#training)
 - [Datasets](#datasets)
 - [Results](#results)
+- [Further Work] (#further-work)
 - [Citations](#citations)
 - [Contact](#contact)
 
@@ -84,12 +85,16 @@ Segmentation Mask (Model output a.)
 Segmentation with Measurements (Model output b.)
 ![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/71b86f9b-db56-4797-990e-0c16b021038a)
 
-The model metrics, displayed below, demonstrate the segmentation accuracy of the UNET.
+The model metrics, displayed below, demonstrate the segmentation accuracy of v1.0 of the AtheroQuantNet 2D-UNET.
 
 F1: 0.82380
 Jaccard: 0.71482
 Recall: 0.80116
 Precision: 0.86614
+
+## Further Work
+
+Future work will be dedicated to enhancing model accuracy and usability. Some benchmarks include: deploying model to an app and experimenting with different model architectures (DeepLabV3).
 
 ## Citations
 
