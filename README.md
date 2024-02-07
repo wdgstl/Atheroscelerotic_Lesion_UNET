@@ -5,7 +5,7 @@ v 1.0 - Feb 7, 2024
 
 ## Author
 
-William Giles, UVA CS & DS'25
+William Giles, UVA CS & DS '25
 
 ## Table of Contents
 
