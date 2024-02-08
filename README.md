@@ -107,7 +107,7 @@ Precision: 0.86614
 
 ## Further Work
 
-Future work will be dedicated to enhancing model accuracy and usability. Some benchmarks include: deploying model to an app and experimenting with different model architectures (DeepLabV3).
+Future work will be dedicated to enhancing model accuracy and usability. Some benchmarks include: deploying model to an app and experimenting with different model architectures (DeepLabV3), automate data pipeline for image preprocessing. 
 
 ## Citations
 
