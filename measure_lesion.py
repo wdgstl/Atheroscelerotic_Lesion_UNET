@@ -13,7 +13,7 @@ from post_processing import measure_rois
 def get_mask(image_path):
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
         model = tf.keras.models.load_model(
-            os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\files", "model.h5"))
+            os.path.join(r"files", "model.h5"))
 
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)  ## [H, w, 3]
 
