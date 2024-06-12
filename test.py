@@ -13,6 +13,8 @@ from data_preprocessing import load_dataset, resize_with_aspect_ratio
 import imageio
 from data_preprocessing import create_dir
 
+from measure_lesion import measure_rois
+
 """ Global parameters """
 H = 256
 W = 256
@@ -36,6 +38,7 @@ def evaluate_model(dataset_path, model):
     np.random.seed(42)
     tf.random.set_seed(42)
     _, _, (test_x, test_y) = load_dataset(dataset_path)
+    print(test_x)
     """ Prediction and Evaluation """
     SCORE = []
     for x, y in tqdm(zip(test_x, test_y), total=2):
@@ -61,8 +64,10 @@ def evaluate_model(dataset_path, model):
         y_pred = y_pred.astype(np.int32)
 
         """ Saving the prediction """
-        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\results", name)
+        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\results2", name)
         save_results("pred", image, mask, y_pred, save_image_path)
+
+        #get the total lesion area to add
         #        print("image", image)
         #        print("mask", mask)
         #        print("pred", y_pred)
@@ -88,7 +93,7 @@ def evaluate_model(dataset_path, model):
     print(f"Precision: {score[3]:0.5f}")
 
     df = pd.DataFrame(SCORE, columns=["Image", "F1", "Jaccard", "Recall", "Precision"])
-    df.to_csv(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23/files/score.csv")
+    df.to_csv(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23/files2/score.csv")
 
 if __name__ == "__main__":
     """ Directory for storing files """

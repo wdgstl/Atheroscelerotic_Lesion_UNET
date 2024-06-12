@@ -10,6 +10,8 @@ from metrics import dice_coef, dice_loss
 from post_processing import measure_rois
 
 
+
+
 def get_mask(image_path):
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
         model = tf.keras.models.load_model(
@@ -25,8 +27,9 @@ def get_mask(image_path):
     # Save image locally
     plt.imshow(image_rgb)
     plt.axis('off')
-    plt.savefig(f"results/histogram_{image_number}.png")
-    print(f"Histogram Saved")
+    plt.savefig(f"results/histology_{image_number}.png")
+    plt.close()
+    print(f"Histology Saved")
 
     x = image / 255.0  ## [H, w, 3]
     x = np.expand_dims(x, axis=0)  ## [1, H, w, 3]
@@ -48,7 +51,7 @@ def get_mask(image_path):
 
 if __name__ == "__main__":
 
-    image_path = input(r"Enter path to Histogram Image: ")
+    image_path = input(r"Enter path to Histology Image: ")
     mask = get_mask(image_path)
     measure_rois(image_path, mask)
 
