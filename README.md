@@ -1,23 +1,24 @@
-# Atherosclerotic Lesion Segmentation & Quantification UNET
+# **AtheroQuantNet v1.0**
+Atherosclerotic Lesion Segmentation & Quantification UNET
+
+v 1.0 - Feb 7, 2024
 
 ## Author
 
-William Giles, UVA CS '25
+William Giles, UVA CS & DS '25
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Installation & Usage](#installation-&-usage)
 - [Model Overview](#model-overview)
   - [Architecture](#architecture)
   - [Training](#training)
-  - [Performance](#performance)
 - [Datasets](#datasets)
 - [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
+- [Further Work](#further-work)
 - [Citations](#citations)
 - [Contact](#contact)
 
@@ -31,7 +32,9 @@ Because the current methods for measuring atherosclerotic lesion sizes on numero
 
 ### Prerequisites
 
-All requirements needed for running this model are in requirements.txt.
+Requires up to date installations of Python3 and pip3.
+
+All additional requirements needed for running this model are in requirements.txt.
 
 To install them, simply run the command: pip install -r requirements.txt 
 
@@ -41,13 +44,13 @@ To install them, simply run the command: pip install -r requirements.txt
 
 2. Install all requirements from requirements.txt using command: pip install -r requirements.txt 
 
-3. Upload image to segment to the same folder
+3. Upload image to segment to the same folder (in .tif format)
 
 4. Run the command: python3 measure_lesion.py 
 
 5. Follow prompts and enter the image filepath 
 
-6. Histogram Image, Segmentation Image, Image with Measurements, and a csv with measurements will be saved in the results file of the directory. 
+6. Histogram Image, Segmentation Image Mask, Image with Measurements, and a csv with measurements will be saved in the results file of the directory. 
 
 ## Model Overview
 
@@ -55,7 +58,7 @@ To install them, simply run the command: pip install -r requirements.txt
 
 ![image](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/fcd2cd88-1cc7-402b-991b-ba787347de63)
 
-Convolutional neural networks are a type of deep learning model that have the ability to process and analyze images, making them ideal candidates for improving many biomedical image classification, recognition, and segmentation processes that are required in the medical field. These models are supervised learning models, meaning that they can be trained with thousands of images that are labeled with a corresponding mask, or annotated image. U-net is a type of convolutional neural network architecture that is ideal for segmenting 2D biomedical images. It consists of two primary components: the contracting path, and the expanding path [6]. The contracting path is down convolutional and consists of a series of repeated convolutional and pooling operations. As the images are processed through this path, the feature maps get spatially smaller, increasing the “what” and decreasing the “where.” Next, the feature maps are built up into the original image size in the expanding path, where the up-sample representations at each step are concatenated with the corresponding feature maps in the contraction pathway. Ultimately, training a 2D U-Net model with hundreds to thousands of images will increase its accuracy in segmenting images until it is ready to be safely deployed in the medical field. As mentioned, these models have had tremendous success in segmenting biomedical images. In the Shi lab, a 2D-Unet supervised model has been created and trained to automatically segment abdominal subcutaneous fat and visceral fat on CT and magnetic resonance images [1][2]. The question is whether a 2D-Unet supervised model can be used to catalyze advances in researching deadly heart diseases.
+Convolutional neural networks are a type of deep learning model that have the ability to process and analyze images, making them ideal candidates for improving many biomedical image classification, recognition, and segmentation processes that are required in the medical field. These models are supervised learning models, meaning that they can be trained with thousands of images that are labeled with a corresponding mask, or annotated image. U-net is a type of convolutional neural network architecture that is ideal for segmenting 2D biomedical images. It consists of two primary components: the contracting path, and the expanding path. The contracting path is down convolutional and consists of a series of repeated convolutional and pooling operations. As the images are processed through this path, the feature maps get spatially smaller, increasing the “what” and decreasing the “where.” Next, the feature maps are built up into the original image size in the expanding path, where the up-sample representations at each step are concatenated with the corresponding feature maps in the contraction pathway. Ultimately, training a 2D U-Net model with hundreds to thousands of images will increase its accuracy in segmenting images until it is ready to be safely deployed in the medical field. As mentioned, these models have had tremendous success in segmenting biomedical images. In the Shi lab, a 2D-Unet supervised model has been created and trained to automatically segment abdominal subcutaneous fat and visceral fat on CT and magnetic resonance images. The question is whether a 2D-Unet supervised model can be used to catalyze advances in researching deadly heart diseases.
 
 ### Training
 
@@ -67,34 +70,54 @@ The next stage of image preprocessing involved converting .czi segmentation imag
 
 There were a total of 2533 images used in this project. They were broken up into 1533 images that were used to train the UNET, 510 images that were used to validate the UNET, and 510 images that were used to test and measure the accuracy of the UNET. 
 
-### Performance
-
 ## Datasets
 
-
+This model used private datasets collected from Shi Lab. (2,533 histogram images and 2,533 segmentation images). 
 
 ## Results 
 
 The model takes in a histogram image and outputs a predicted segmentation mask along with the predicted areas of each segmented lesion, as shown below:
 
-![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/fc59242a-f69a-4126-8406-3699cf883887)
-![seg](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/05bbaeed-af33-475d-8f2a-52bdf148c284)
-![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/71b86f9b-db56-4797-990e-0c16b021038a)
 
-The model metrics, displayed below, demonstrate the segmentation accuracy of the UNET.
+_**Raw Histogram**_
 
-Segmentation Metrics:
-Overall Model Metrics:
+![hist](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/0b667b86-8197-41cb-99d7-65367f14c54f)
+
+
+_**Segmentation Mask (Model output a.)**_ 
+
+![mask](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/6f5c946a-bd54-4561-a0ae-a0bbeb31a081)
+
+
+_**Segmentation with Measurements (Model output b.)**_ 
+
+![meas](https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET/assets/117789564/1a9483e2-b0bb-4406-a312-23a50ac13693)
+
+
+
+The model metrics, displayed below, demonstrate the segmentation accuracy of v1.0 of the AtheroQuantNet 2D-UNET.
+
 F1: 0.82380
+
 Jaccard: 0.71482
+
 Recall: 0.80116
+
 Precision: 0.86614
+
+## Further Work
+
+Future work will be dedicated to enhancing model accuracy and usability. Some benchmarks include: deploying model to an app and experimenting with different model architectures (DeepLabV3), automate data pipeline for image preprocessing. 
 
 ## Citations
 
 https://github.com/nikhilroxtomar/Brain-Tumor-Segmentation-in-TensorFlow-2.0/blob/main/UNET/README.md
 
+Consulted for overall unet architecture & training/testing pipelines.
+
 https://arxiv.org/abs/1505.04597
+
+Consulted for 2D-UNET architecture. 
 
 ## Contact
 
