@@ -42,15 +42,19 @@ To install them, simply run the command: pip install -r requirements.txt
 
 1. Open terminal and clone this repository using git clone https://github.com/wdgstl/Atheroscelerotic_Lesion_UNET.git
 
-2. Install all requirements from requirements.txt using command: pip install -r requirements.txt 
+2. Create a venv: python3 -m venv myenv
 
-3. Upload image to segment to the same folder (in .tif format)
+3. Enter venv: source myenv/bin/activate 
 
-4. Run the command: python3 measure_lesion.py 
+4. Install all requirements from requirements.txt using command: pip install -r requirements.txt 
 
-5. Follow prompts and enter the image filepath 
+5. Upload image to segment to the same folder (in .tif format)
 
-6. Histogram Image, Segmentation Image Mask, Image with Measurements, and a csv with measurements will be saved in the results file of the directory. 
+6. Run the command: python3 measure_lesion.py 
+
+7. Follow prompts and enter the image filepath 
+
+8. Histogram Image, Segmentation Image Mask, Image with Measurements, and a csv with measurements will be saved in the results file of the directory. 
 
 ## Model Overview
 
