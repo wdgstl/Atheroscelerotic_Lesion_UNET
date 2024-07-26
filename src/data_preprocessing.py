@@ -1,3 +1,5 @@
+#CREATE A NEW MODEL CLASS FOR ABSTRACTION
+
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 import numpy as np
@@ -17,12 +19,16 @@ def create_dir(path):
 def load_dataset(path, split=0.2):
     images = sorted(glob(os.path.join(path, "../data/histology", "*.tif")))
     masks = sorted(glob(os.path.join(path, "../data/masks", "*.tif")))
+    measurements = sorted(glob(os.path.join(path, "../data/measurements, *.csv")))
     split_size = int(len(images) * split) #ratio of train:validation:test
     train_x, valid_x = train_test_split(images, test_size=split_size, random_state=42)
     train_y, valid_y = train_test_split(masks, test_size=split_size, random_state=42)
+    train_mes, valid_mes = train_test_split(measurements,test_size=split_size, random_state=42)
     train_x, test_x = train_test_split(train_x, test_size=split_size, random_state=42)
     train_y, test_y = train_test_split(train_y, test_size=split_size, random_state=42)
-    return (train_x, train_y), (valid_x, valid_y), (test_x, test_y)
+    train_mes, test_mes = train_test_split(measurements,test_size=split_size, random_state=42)
+    
+    return (train_x, train_y, train_mes), (valid_x, valid_y, valid_mes), (test_x, test_y, test_mes)
 
 #resizes images to (H, W) without losing aspect ratio (uses padding)
 def resize_with_aspect_ratio(type, x, size, direction):
