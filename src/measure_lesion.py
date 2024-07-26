@@ -4,13 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 from keras.utils import CustomObjectScope
-
 from data_preprocessing import resize_with_aspect_ratio
 from metrics import dice_coef, dice_loss
 from post_processing import measure_rois
-
-
-
 
 def get_mask(image_path):
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
@@ -27,7 +23,7 @@ def get_mask(image_path):
     # Save image locally
     plt.imshow(image_rgb)
     plt.axis('off')
-    plt.savefig(f"results/histology_{image_number}.png")
+    plt.savefig(f"../results/final_results/histology_{image_number}.png")
     plt.close()
     print(f"Histology Saved")
 
@@ -43,7 +39,7 @@ def get_mask(image_path):
     # Save mask locally
     plt.imshow(y_pred, cmap='gray')
     plt.axis('off')
-    plt.savefig(f'results/mask_{image_number}.png')
+    plt.savefig(f'../results/final_results/mask_{image_number}.png')
     print("------------------------")
     print(f"Segmentation Mask Saved")
 

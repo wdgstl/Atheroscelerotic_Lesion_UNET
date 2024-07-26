@@ -58,11 +58,11 @@ if __name__ == "__main__":
     lr = 0.001
     num_epochs = 500
 
-    model_path = os.path.join("files", "model.h5")
-    csv_path = os.path.join("files", "log.csv")
+    model_path = os.path.join("../files", "model.h5")
+    csv_path = os.path.join("../files", "log.csv")
 
     """ Dataset """
-    dataset_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23"
+    dataset_path = "../data"
 
     train_unet(dataset_path, epochs = num_epochs, batch_size = batch_size, lr = lr)
 

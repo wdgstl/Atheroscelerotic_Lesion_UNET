@@ -15,8 +15,8 @@ def create_dir(path):
         os.makedirs(path)
 
 def load_dataset(path, split=0.2):
-    images = sorted(glob(os.path.join(path, "HistogramFinal", "*.tif")))
-    masks = sorted(glob(os.path.join(path, "SegmentedFinal/masks", "*.tif")))
+    images = sorted(glob(os.path.join(path, "../data/histology", "*.tif")))
+    masks = sorted(glob(os.path.join(path, "../data/masks", "*.tif")))
     split_size = int(len(images) * split) #ratio of train:validation:test
     train_x, valid_x = train_test_split(images, test_size=split_size, random_state=42)
     train_y, valid_y = train_test_split(masks, test_size=split_size, random_state=42)

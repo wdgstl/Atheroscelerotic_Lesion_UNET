@@ -1,6 +1,5 @@
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
-
 import numpy as np
 import cv2
 import pandas as pd
@@ -12,8 +11,6 @@ from metrics import dice_loss, dice_coef
 from data_preprocessing import load_dataset, resize_with_aspect_ratio
 import imageio
 from data_preprocessing import create_dir
-
-from measure_lesion import measure_rois
 
 """ Global parameters """
 H = 256
@@ -42,11 +39,9 @@ def evaluate_model(dataset_path, model):
     """ Prediction and Evaluation """
     SCORE = []
     for x, y in tqdm(zip(test_x, test_y), total=2):
-        #len(test_y
         """ Extracting the name """
         name = os.path.basename(x)
-        #        print("NAME:",name)
-
+        
         """ Reading the image """
         image = cv2.imread(x, cv2.IMREAD_COLOR)  ## [H, w, 3]
         image = resize_with_aspect_ratio('image', image, (W, H), 'down')  ## [H, w, 3]
@@ -64,14 +59,9 @@ def evaluate_model(dataset_path, model):
         y_pred = y_pred.astype(np.int32)
 
         """ Saving the prediction """
-        save_image_path = os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\results2", name)
+        save_image_path = os.path.join("../results/test_images", name)
         save_results("pred", image, mask, y_pred, save_image_path)
-
-        #get the total lesion area to add
-        #        print("image", image)
-        #        print("mask", mask)
-        #        print("pred", y_pred)
-        #        print(save_image_path)
+        
         """ Flatten the array """
         mask = mask / 255.0
         mask = (mask > 0.5).astype(np.int32).flatten()
@@ -93,17 +83,17 @@ def evaluate_model(dataset_path, model):
     print(f"Precision: {score[3]:0.5f}")
 
     df = pd.DataFrame(SCORE, columns=["Image", "F1", "Jaccard", "Recall", "Precision"])
-    df.to_csv(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23/files2/score.csv")
+    df.to_csv("../results/test_images/test_image_metrics.csv")
 
 if __name__ == "__main__":
     """ Directory for storing files """
     create_dir("results")
 
-    dataset_path = r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23"
+    dataset_path = "../data"
 
     """ Load the model """
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
-        model = tf.keras.models.load_model(os.path.join(r"C:\Users\wdgst\Data\ShiData\WDG\UNET_12.21.23\files", "model.h5"))
+        model = tf.keras.models.load_model(os.path.join("../files", "model.h5"))
 
     evaluate_model(dataset_path, model)
 

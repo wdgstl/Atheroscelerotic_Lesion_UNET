@@ -1,3 +1,11 @@
 #model files
 *.keras
 *.h5
+
+#image files
+*.czi
+*.jpg
+*.tif
+
+#metrics
+*.csv
