@@ -2,7 +2,7 @@ import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 import numpy as np
 import tensorflow as tf
-from keras.callbacks import ModelCheckpoint, CSVLogger, ReduceLROnPlateau, EarlyStopping, TensorBoard
+from keras.callbacks import ModelCheckpoint, CSVLogger, ReduceLROnPlateau, EarlyStopping
 from keras.optimizers import Adam
 from unet import build_unet
 from metrics import dice_loss, dice_coef
@@ -22,6 +22,8 @@ def train_unet(dataset_path,
         epochs, batch_size, lr):
     np.random.seed(42)
     tf.random.set_seed(42)
+    
+    print("Num GPUs Used for Training: ", len(tf.config.list_physical_devices('GPU')))
 
     create_dir("files")
 
@@ -57,13 +59,20 @@ if __name__ == "__main__":
     batch_size = 32
     lr = 0.001
     num_epochs = 500
+    
+    # The code snippet `current_dir = os.path.dirname(__file__)` is used to get the directory of the
+    # current Python script file. It retrieves the directory path where the current Python script is
+    # located.
+    current_dir = os.path.dirname(__file__)
+    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
 
-    model_path = os.path.join("../files", "model.h5")
-    csv_path = os.path.join("../files", "log.csv")
+    model_path = os.path.join(parent_dir, "files", "model.keras")
+    csv_path = os.path.join(parent_dir, "files", "log.csv")
 
     """ Dataset """
-    dataset_path = "../data"
-
+    
+    dataset_path = os.path.join(parent_dir, "data")
+     
     train_unet(dataset_path, epochs = num_epochs, batch_size = batch_size, lr = lr)
 
 

@@ -11,7 +11,7 @@ from post_processing import measure_rois
 def get_mask(image_path):
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
         model = tf.keras.models.load_model(
-            os.path.join(r"files", "model.h5"))
+            os.path.join("../files", "model.h5"))
 
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)  ## [H, w, 3]
 
@@ -46,7 +46,6 @@ def get_mask(image_path):
     return y_pred
 
 if __name__ == "__main__":
-
     image_path = input(r"Enter path to Histology Image: ")
     mask = get_mask(image_path)
     measure_rois(image_path, mask)

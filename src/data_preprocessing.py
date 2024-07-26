@@ -17,18 +17,15 @@ def create_dir(path):
         os.makedirs(path)
 
 def load_dataset(path, split=0.2):
-    images = sorted(glob(os.path.join(path, "../data/histology", "*.tif")))
-    masks = sorted(glob(os.path.join(path, "../data/masks", "*.tif")))
-    measurements = sorted(glob(os.path.join(path, "../data/measurements, *.csv")))
+    images = sorted(glob(os.path.join(path, "histology", "*.tif")))
+    masks = sorted(glob(os.path.join(path, "masks", "*.tif")))
     split_size = int(len(images) * split) #ratio of train:validation:test
     train_x, valid_x = train_test_split(images, test_size=split_size, random_state=42)
     train_y, valid_y = train_test_split(masks, test_size=split_size, random_state=42)
-    train_mes, valid_mes = train_test_split(measurements,test_size=split_size, random_state=42)
     train_x, test_x = train_test_split(train_x, test_size=split_size, random_state=42)
     train_y, test_y = train_test_split(train_y, test_size=split_size, random_state=42)
-    train_mes, test_mes = train_test_split(measurements,test_size=split_size, random_state=42)
     
-    return (train_x, train_y, train_mes), (valid_x, valid_y, valid_mes), (test_x, test_y, test_mes)
+    return (train_x, train_y), (valid_x, valid_y), (test_x, test_y)
 
 #resizes images to (H, W) without losing aspect ratio (uses padding)
 def resize_with_aspect_ratio(type, x, size, direction):
@@ -71,7 +68,7 @@ def resize_with_aspect_ratio(type, x, size, direction):
 def read_image(path):
     path = path.decode()
     x = cv2.imread(path, cv2.IMREAD_COLOR)
-    x = resize_with_aspect_ratio('image', x, (H, W))
+    x = resize_with_aspect_ratio('image', x, (H, W), 'down')
     x = x / 255.0
     x = x.astype(np.float32)
     return x
@@ -79,7 +76,7 @@ def read_image(path):
 def read_mask(path):
     path = path.decode()
     x = cv2.imread(path, cv2.IMREAD_GRAYSCALE)  ## (h, w)
-    x = resize_with_aspect_ratio('mask', x, (H, W))  ## (h, w)
+    x = resize_with_aspect_ratio('mask', x, (H, W), 'down')  ## (h, w)
     x = x / 255.0  ## (h, w)
     x = x.astype(np.float32)  ## (h, w)
     x = np.expand_dims(x, axis=-1)  ## (h, w, 1)
@@ -97,7 +94,7 @@ def tf_parse(x, y):
     y.set_shape([H, W, 1])
     return x, y
 
-#creates a tensorflow dataset using batchs --> tensor_slices
+#creates a tensorflow dataset using batches --> tensor_slices
 def tf_dataset(X, Y, batch=2):
     dataset = tf.data.Dataset.from_tensor_slices((X, Y))
     dataset = dataset.map(tf_parse)

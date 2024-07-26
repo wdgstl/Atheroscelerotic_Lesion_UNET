@@ -86,16 +86,15 @@ def evaluate_model(dataset_path, model):
     df.to_csv("../results/test_images/test_image_metrics.csv")
 
 if __name__ == "__main__":
-    """ Directory for storing files """
-    create_dir("results")
 
-    dataset_path = "../data"
+    current_dir = os.path.dirname(__file__)
+    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
 
     """ Load the model """
     with CustomObjectScope({"dice_coef": dice_coef, "dice_loss": dice_loss}):
-        model = tf.keras.models.load_model(os.path.join("../files", "model.h5"))
+        model = tf.keras.models.load_model(os.path.join(os.path.join(parent_dir, "files"), "model.keras"))
 
-    evaluate_model(dataset_path, model)
+    evaluate_model(os.path.join(parent_dir, "data"), model)
 
 
 
