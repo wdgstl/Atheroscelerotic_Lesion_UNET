@@ -1,7 +1,7 @@
 # **AtheroQuantNet v1.0**
 Atherosclerotic Lesion Segmentation & Quantification UNET
 
-v 1.0 - Feb 7, 2024 
+v1.0 - Feb 7, 2024 
 
 ## Author
 
